@@ -4,6 +4,7 @@ import About from "./containers/About/About";
 import Add from "./containers/Add/Add";
 import Contacts from "./containers/Contacts/Contacts";
 import Home from "./containers/Home/Home";
+import Post from "./containers/Post/Post";
 
 function App() {
   return (
@@ -14,9 +15,12 @@ function App() {
       <main className="container">
         <Routes>
           <Route path='/' element={<Home/>}/>
+          <Route path='/posts/' element={<Home/>}/>
+          <Route path='/posts/:id' element={<Post/>}/>
           <Route path='/new-post' element={<Add/>}/>
           <Route path='/about' element={<About/>}/>
           <Route path='/contacts' element={<Contacts/>}/>
+          <Route path="*" element={<h4>Not found!</h4>}/>
         </Routes>
       </main>
     </>
