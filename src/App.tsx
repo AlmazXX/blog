@@ -14,7 +14,7 @@ function App() {
       <main className="container">
         <Routes>
           <Route path='/' element={<Home/>}/>
-          <Route path='/add' element={<Add/>}/>
+          <Route path='/new-post' element={<Add/>}/>
           <Route path='/about' element={<About/>}/>
           <Route path='/contacts' element={<Contacts/>}/>
         </Routes>
