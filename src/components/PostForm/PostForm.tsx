@@ -1,12 +1,12 @@
 import { ChangeEvent, FC, FormEvent, useState } from "react";
-import { PostApi } from "../../types";
+import { IPostApi } from "../../types";
 
 interface Props {
-  onSubmit: (post: PostApi) => void;
+  onSubmit: (post: IPostApi) => void;
 }
 
 const PostForm: FC<Props> = ({ onSubmit }) => {
-  const [post, setPost] = useState<PostApi>({ title: "", body: "", date: "" });
+  const [post, setPost] = useState<IPostApi>({ title: "", body: "", date: "" });
 
   const onPostChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
