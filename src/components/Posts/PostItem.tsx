@@ -14,7 +14,7 @@ const PostItem: FC<Props> = ({ post }) => {
             Created on: <span>{post.date}</span>
           </p>
           <h5 className="card-title">{post.title}</h5>
-          <p className="card-text">{post.body}</p>
+          <p className="card-text">{post.body.length>100 ? post.body.slice(0,100) + '...' : post.body}</p>
           <Link to={`/posts/${post.id}`} className="btn btn-primary">
             Read more
           </Link>
