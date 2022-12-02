@@ -15,7 +15,7 @@ const PostItem: FC<Props> = ({ post }) => {
             <span>
               {new Date(post.date).toLocaleString("en-en", {
                 day: "numeric",
-                month: "short",
+                month: "long",
                 year: "numeric",
               })}
             </span>
