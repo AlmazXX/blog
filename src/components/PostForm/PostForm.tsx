@@ -1,4 +1,5 @@
 import { ChangeEvent, FC, FormEvent, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import { IPostApi } from "../../types";
 
 interface Props {
@@ -7,6 +8,7 @@ interface Props {
 }
 
 const PostForm: FC<Props> = ({ existingPost, onSubmit }) => {
+  const { id } = useParams();
   const [post, setPost] = useState<IPostApi>(
     existingPost || { title: "", body: "", date: "" }
   );
@@ -29,7 +31,7 @@ const PostForm: FC<Props> = ({ existingPost, onSubmit }) => {
   };
 
   return (
-    <form onSubmit={onFormSubmit}>
+    <form className="p-0" onSubmit={onFormSubmit}>
       <div className="form-group mb-2">
         <label htmlFor="title">Title</label>
         <input
@@ -51,9 +53,14 @@ const PostForm: FC<Props> = ({ existingPost, onSubmit }) => {
           onChange={onPostChange}
         />
       </div>
-      <button type="submit" className="btn btn-primary">
-        {existingPost ? 'Update' : 'Post'}
-      </button>
+      <div className="d-flex gap-3 px-0 mb-3">
+        <button type="submit" className="btn btn-primary">
+          {existingPost ? "Update" : "Post"}
+        </button>
+        <Link className="btn btn-warning" to={id ? `/posts/${id}` : "/"}>
+          Cancel
+        </Link>
+      </div>
     </form>
   );
 };

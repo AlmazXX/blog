@@ -22,13 +22,16 @@ const Post: FC<Props> = ({ post, onDelete }) => {
         </span>
       </p>
       <p className="bg-light rounded-3 p-3 lh-lg">{post.body}</p>
-      <div className="d-flex gap-3 px-0">
-        <Link to={`/posts/${post.id}/edit`} className="btn btn-primary">
+      <div className="d-flex gap-3 px-0 mb-3">
+        <Link to={`edit`} className="btn btn-primary">
           Edit post
         </Link>
         <button className="btn btn-danger" onClick={onDelete}>
           Delete post
         </button>
+        <Link className="btn btn-warning" to="/">
+          Cancel
+        </Link>
       </div>
     </>
   );
