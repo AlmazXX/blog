@@ -11,9 +11,9 @@ const Add = () => {
 
   const createPost = async (post: IPostApi) => {
     try {
+      setLoading(true);
       await axiosApi.post("/posts.json", post);
       navigate("/");
-      setLoading(true);
     } finally {
       setLoading(false);
     }
