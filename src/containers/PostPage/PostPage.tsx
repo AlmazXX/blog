@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import axiosApi from "../../axiosApi";
 import Post from "../../components/Post/Post";
 import Spinner from "../../components/Spinner/Spinner";
 import { IPost, IPostApi } from "../../types";
 
 const PostPage = () => {
+  const location = useLocation();
   const navigate = useNavigate();
   const { id } = useParams();
   const [post, setPost] = useState<IPost | null>(null);
@@ -24,9 +25,9 @@ const PostPage = () => {
 
   useEffect(() => {
     getOnePost().catch(console.error);
-  }, [getOnePost]);
+  }, [getOnePost, location]);
 
-  const deleteOnePost = useCallback(async () => {
+  const deleteOnePost = async () => {
     try {
       setLoading(true);
       await axiosApi.delete(`/posts/${id}.json`);
@@ -34,15 +35,16 @@ const PostPage = () => {
     } finally {
       setLoading(false);
     }
-  }, [id, navigate]);
+  };
 
   return (
-    <div className="row mt-3">
+    <div className="col row mt-3">
       {loading ? (
         <Spinner />
       ) : (
         post && <Post post={post} onDelete={deleteOnePost} />
       )}
+      <Outlet />
     </div>
   );
 };
