@@ -36,16 +36,14 @@ const EditPost = () => {
   };
 
   return (
-    <div className="row mt-3">
-      <h4>Edit post</h4>
-      <div className="col-6">
-        {loading ? (
-          <Spinner />
-        ) : (
-          post && <PostForm existingPost={post} onSubmit={updateOnePost} />
-        )}
-      </div>
-    </div>
+    <>
+      <h5 className="p-0">Edit post</h5>
+      {loading ? (
+        <Spinner />
+      ) : (
+        post && <PostForm existingPost={post} onSubmit={updateOnePost} />
+      )}
+    </>
   );
 };
 
