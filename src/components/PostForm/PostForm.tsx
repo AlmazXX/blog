@@ -52,7 +52,7 @@ const PostForm: FC<Props> = ({ existingPost, onSubmit }) => {
         />
       </div>
       <button type="submit" className="btn btn-primary">
-        Post
+        {existingPost ? 'Update' : 'Post'}
       </button>
     </form>
   );
