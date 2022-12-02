@@ -8,7 +8,7 @@ interface Props {
 
 const Posts: FC<Props> = ({ posts }) => {
   return (
-    <div className="row mt-3 gap-3">
+    <div className="col row mt-3 gap-3">
       {posts.map((post) => (
         <PostItem key={post.id} post={post} />
       ))}
