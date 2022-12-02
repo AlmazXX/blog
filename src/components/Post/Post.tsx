@@ -1,9 +1,9 @@
 import { FC, MouseEventHandler } from "react";
 import { Link } from "react-router-dom";
-import { IPost } from "../../types";
+import { IPostApi } from "../../types";
 
 interface Props {
-  post: IPost;
+  post: IPostApi;
   onDelete: MouseEventHandler;
 }
 
