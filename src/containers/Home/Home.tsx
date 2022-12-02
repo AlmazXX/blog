@@ -13,7 +13,7 @@ const Home = () => {
       setLoading(true);
       const postsResponse = await axiosApi.get<IPostsList>("/posts.json");
 
-      if (postsResponse.data === null) return setPosts([]);
+      if (!postsResponse.data) return setPosts([]);
 
       const posts = Object.keys(postsResponse.data)
         .map((key) => ({
@@ -21,7 +21,6 @@ const Home = () => {
           id: key,
         }))
         .sort((a, b) => (b.date > a.date ? 1 : -1));
-      console.log(posts);
       setPosts(posts);
     } finally {
       setLoading(false);
