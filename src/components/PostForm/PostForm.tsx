@@ -3,10 +3,13 @@ import { IPostApi } from "../../types";
 
 interface Props {
   onSubmit: (post: IPostApi) => void;
+  existingPost?: IPostApi;
 }
 
-const PostForm: FC<Props> = ({ onSubmit }) => {
-  const [post, setPost] = useState<IPostApi>({ title: "", body: "", date: "" });
+const PostForm: FC<Props> = ({ existingPost, onSubmit }) => {
+  const [post, setPost] = useState<IPostApi>(
+    existingPost || { title: "", body: "", date: "" }
+  );
 
   const onPostChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -27,7 +30,7 @@ const PostForm: FC<Props> = ({ onSubmit }) => {
 
   return (
     <form onSubmit={onFormSubmit}>
-      <div className="form-group">
+      <div className="form-group mb-2">
         <label htmlFor="title">Title</label>
         <input
           type="text"
@@ -38,7 +41,7 @@ const PostForm: FC<Props> = ({ onSubmit }) => {
           onChange={onPostChange}
         />
       </div>
-      <div className="form-group mb-2">
+      <div className="form-group mb-3">
         <label htmlFor="body">Text</label>
         <textarea
           name="body"
