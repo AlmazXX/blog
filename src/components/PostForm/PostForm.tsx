@@ -18,7 +18,7 @@ const PostForm: FC<Props> = ({ existingPost, onSubmit }) => {
     setPost((prev) => ({
       ...prev,
       [name]: value,
-      date: new Date().toISOString().slice(0, 19),
+      date: new Date().toISOString(),
     }));
   };
 
