@@ -15,14 +15,18 @@ function App() {
       </header>
       <main className="container">
         <Routes>
-          <Route path='/' element={<Home/>}/>
-          <Route path='/posts/' element={<Home/>}/>
-          <Route path='/posts/:id' element={<PostPage/>}/>
-          <Route path='/posts/:id/edit' element={<EditPost />}/>
-          <Route path='/new-post' element={<Add/>}/>
-          <Route path='/about' element={<About/>}/>
-          <Route path='/contacts' element={<Contacts/>}/>
-          <Route path="*" element={<h4>Not found!</h4>}/>
+          <Route path="/" element={<Home />}>
+            <Route path="posts/:id" element={<PostPage />}>
+              <Route path="edit" element={<EditPost />} />
+            </Route>
+          </Route>
+          <Route path="/posts/" element={<Home />}>
+            <Route path=":id" element={<PostPage />} />
+          </Route>
+          <Route path="/new-post" element={<Add />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contacts" element={<Contacts />} />
+          <Route path="*" element={<h4>Not found!</h4>} />
         </Routes>
       </main>
     </>
