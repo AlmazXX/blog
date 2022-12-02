@@ -1,10 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
+import { Outlet, useLocation } from "react-router-dom";
 import axiosApi from "../../axiosApi";
 import Posts from "../../components/Posts/Posts";
 import Spinner from "../../components/Spinner/Spinner";
 import { IPost, IPostsList } from "../../types";
 
 const Home = () => {
+  const location = useLocation();
   const [posts, setPosts] = useState<IPost[]>([]);
   const [loading, setLoading] = useState(false);
 
@@ -28,12 +30,13 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    void getPosts();
-  }, [getPosts]);
+      void getPosts();
+  }, [getPosts, location]);
 
   return (
     <div className="mt-3">
       <h4>My Blog</h4>
+      <div className="row gap-5 align-items-start">
       {loading ? (
         <Spinner />
       ) : posts.length ? (
@@ -41,6 +44,8 @@ const Home = () => {
       ) : (
         <p>There's no posts</p>
       )}
+      <Outlet/>
+      </div>
     </div>
   );
 };
