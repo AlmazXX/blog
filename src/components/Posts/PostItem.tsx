@@ -1,11 +1,13 @@
 import { FC } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { IPost } from "../../types";
 
 interface Props {
   post: IPost;
 }
 const PostItem: FC<Props> = ({ post }) => {
+  const location = useLocation();
+
   return (
     <div className="col-12">
       <div className="card">
@@ -26,7 +28,12 @@ const PostItem: FC<Props> = ({ post }) => {
               ? post.body.slice(0, 100) + "..."
               : post.body}
           </p>
-          <Link to={`/posts/${post.id}`} className="btn btn-primary">
+          <Link
+            to={
+              location.pathname === "/posts" ? `${post.id}` : `posts/${post.id}`
+            }
+            className="btn btn-primary"
+          >
             Read more
           </Link>
         </div>
