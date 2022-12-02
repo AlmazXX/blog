@@ -8,7 +8,7 @@ const Home = () => {
   const [posts, setPosts] = useState<IPost[]>([]);
   const [loading, setLoading] = useState(false);
 
-  const fetchPosts = useCallback(async () => {
+  const getPosts = useCallback(async () => {
     try {
       setLoading(true);
       const postsResponse = await axiosApi.get<IPostsList>("/posts.json");
@@ -23,8 +23,8 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    void fetchPosts();
-  }, [fetchPosts]);
+    void getPosts();
+  }, [getPosts]);
 
   return (
     <div className="mt-3">
