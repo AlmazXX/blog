@@ -19,6 +19,8 @@ const PostItem: FC<Props> = ({ post }) => {
                 day: "numeric",
                 month: "long",
                 year: "numeric",
+                hour: "numeric",
+                minute: "numeric",
               })}
             </span>
           </p>

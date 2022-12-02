@@ -18,6 +18,8 @@ const Post: FC<Props> = ({ post, onDelete }) => {
             day: "numeric",
             month: "long",
             year: "numeric",
+            hour: 'numeric',
+            minute: 'numeric',
           })}
         </span>
       </p>
