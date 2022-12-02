@@ -11,10 +11,21 @@ const PostItem: FC<Props> = ({ post }) => {
       <div className="card">
         <div className="card-body">
           <p className="small float-sm-end m-0 text-muted">
-            Created on: <span>{post.date}</span>
+            Created on:{" "}
+            <span>
+              {new Date(post.date).toLocaleString("en-en", {
+                day: "numeric",
+                month: "short",
+                year: "numeric",
+              })}
+            </span>
           </p>
           <h5 className="card-title">{post.title}</h5>
-          <p className="card-text">{post.body.length>100 ? post.body.slice(0,100) + '...' : post.body}</p>
+          <p className="card-text">
+            {post.body.length > 100
+              ? post.body.slice(0, 100) + "..."
+              : post.body}
+          </p>
           <Link to={`/posts/${post.id}`} className="btn btn-primary">
             Read more
           </Link>

@@ -12,7 +12,14 @@ const Post: FC<Props> = ({ post, onDelete }) => {
     <>
       <h4>{post.title}</h4>
       <p className="small">
-        Created on: <span>{post.date.split("T").join(" ")}</span>
+        Created on:{" "}
+        <span>
+          {new Date(post.date).toLocaleString("en-en", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          })}
+        </span>
       </p>
       <p className="bg-light rounded-3 p-3 lh-lg">{post.body}</p>
       <div className="d-flex gap-3 px-0">
